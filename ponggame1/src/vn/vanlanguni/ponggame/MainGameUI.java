@@ -16,7 +16,7 @@ import javax.swing.JFrame;
  *
  */
 public class MainGameUI extends JFrame{
-	private static final int _HEIGHT = 500;
+	private static final int _HEIGHT = 400;
 	private static final int _WIDTH = 500;
 	private PongPanel pongPanel;
 	
