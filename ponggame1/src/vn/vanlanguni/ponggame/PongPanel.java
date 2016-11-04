@@ -41,7 +41,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private boolean gameOver;
 
 	/** Background. */
-	private Color backgroundColor = Color.BLACK;
+	private Color backgroundColor = Color.BLUE;
 
 	/** State on the control keys. */
 	private boolean upPressed;
