@@ -41,7 +41,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private boolean gameOver;
 
 	/** Background. */
-	private Color backgroundColor = Color.BLUE;
+	private Color backgroundColor = Color.BLACK;
 
 	/** State on the control keys. */
 	private boolean upPressed;
@@ -72,8 +72,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int paddleSpeed = 5;
 
 	/** Player score, show on upper left and right. */
-	private int playerOneScore;
-	private int playerTwoScore;
+	//FIX #2: Thêm = 0 vào private int playerOneScore
+	private int playerOneScore = 0;
+	//FIX #2: Thêm = 0 vào private int playerTwoScore
+	private int playerTwoScore = 0;
 
 	/** Construct a PongPanel. */
 	public PongPanel() {
@@ -128,8 +130,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			int nextBallLeft = ballX + ballDeltaX;
 			int nextBallRight = ballX + diameter + ballDeltaX;
 			// FIXME Something not quite right here
-			int nextBallTop = ballY;
-			int nextBallBottom = ballY + diameter;
+			//FIX #2: Thêm ballDeltaY vào int nextBallTop = ballY + ballDeltaY;
+			int nextBallTop = ballY + ballDeltaY;
+			//FIX #2: Thêm ballDeltaY vào int nextBallBottom = ballY + diameter + ballDeltaY;
+			int nextBallBottom = ballY + diameter + ballDeltaY;
 
 			// Player 1's paddle position
 			int playerOneRight = playerOneX + playerOneWidth;
@@ -150,8 +154,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (nextBallLeft < playerOneRight) {
 				// is it going to miss the paddle?
 				if (nextBallTop > playerOneBottom || nextBallBottom < playerOneTop) {
-
-					playerOneScore++;
+					//FIX #4: sửa palyerOnescore++ thành playerTwoScore++ 
+					playerTwoScore++;
 
 					// Player 2 Win, restart the game
 					if (playerTwoScore == 3) {
@@ -163,7 +167,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				} else {
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
-					ballDeltaX *= 1;
+					//FIX #2: sửa ballDeltaX *= 1 thành ballDeltaX *= -1  
+					ballDeltaX *= -1;
 				}
 			}
 
@@ -185,7 +190,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
-					ballDeltaX *= 1;
+					//FIX #2: sửa ballDeltaX *= 1 thành ballDeltaX *= -1
+					ballDeltaX *=- 1;
 				}
 			}
 
@@ -232,11 +238,11 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// draw the scores
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
-			g.drawString(String.valueOf(playerOneScore), 100, 100); // Player 1
-																	// score
-			g.drawString(String.valueOf(playerOneScore), 400, 100); // Player 2
-																	// score
-
+			g.drawString(String.valueOf(playerOneScore), 100, 100); // Player 1 score
+			
+			//FIX #4: sửa playerOneScore thành playerTwoScore 
+			g.drawString(String.valueOf(playerTwoScore), 400, 100); // Player 2 score
+			
 			// draw the ball
 			g.setColor(Color.RED);
 			g.fillOval(ballX, ballY, diameter, diameter);
