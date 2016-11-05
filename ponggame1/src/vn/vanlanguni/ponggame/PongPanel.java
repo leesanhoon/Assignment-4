@@ -155,6 +155,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				// is it going to miss the paddle?
 				if (nextBallTop > playerOneBottom || nextBallBottom < playerOneTop) {
 					//FIX #4: sửa palyerOnescore++ thành playerTwoScore++ 
+					//FIX #5
 					playerTwoScore++;
 
 					// Player 2 Win, restart the game
