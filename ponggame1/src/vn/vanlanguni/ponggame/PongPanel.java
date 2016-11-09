@@ -104,21 +104,25 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// move player 1
 			// Move up if after moving, paddle is not outside the screen
-			if (upPressed && playerOneY - paddleSpeed > 0) {
+			//FIX #12:upPressed --> sPressed
+			if (sPressed && playerOneY - paddleSpeed > 0) {
 				playerOneY -= paddleSpeed;
 			}
 			// Move down if after moving paddle is not outside the screen
-			if (downPressed && playerOneY + playerOneHeight + paddleSpeed < getHeight()) {
+			//FIX #12:downPressed --> wPressed
+			if (wPressed && playerOneY + playerOneHeight + paddleSpeed < getHeight()) {
 				playerOneY += paddleSpeed;
 			}
 
 			// move player 2
 			// Move up if after moving paddle is not outside the screen
-			if (wPressed && playerTwoY - paddleSpeed > 0) {
+			//FIX #12:wPressed --> upPressed
+			if (upPressed && playerTwoY - paddleSpeed > 0) {
 				playerTwoY -= paddleSpeed;
 			}
 			// Move down if after moving paddle is not outside the screen
-			if (sPressed && playerTwoY + playerTwoHeight + paddleSpeed < getHeight()) {
+			//FIX #12:sPressed --> upPressed
+			if (downPressed && playerTwoY + playerTwoHeight + paddleSpeed < getHeight()) {
 				playerTwoY += paddleSpeed;
 			}
 
@@ -149,7 +153,6 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (nextBallTop < 0 || nextBallBottom > getHeight()) {
 				ballDeltaY *= -1;
 			}
-
 			// will the ball go off the left side?
 			if (nextBallLeft < playerOneRight) {
 				// is it going to miss the paddle?
