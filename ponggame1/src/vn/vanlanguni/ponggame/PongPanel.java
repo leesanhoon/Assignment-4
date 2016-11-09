@@ -55,7 +55,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int diameter = 20;
 	private int ballDeltaX = -1;
 	private int ballDeltaY = 3;
-
+//ImageIcon imgBall;
 	/** Player 1's paddle: position and size */
 	private int playerOneX = 0;
 	private int playerOneY = 250;
@@ -80,7 +80,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	/** Construct a PongPanel. */
 	public PongPanel() {
 		setBackground(backgroundColor);
-
+//Ball
+//imgBall = new ImageIcon("đường dẫn ảnh///.png")
 		// listen to key presses
 		setFocusable(true);
 		addKeyListener(this);
@@ -173,6 +174,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					// FIXME Something wrong here
 					//FIX #2: sửa ballDeltaX *= 1 thành ballDeltaX *= -1  
 					ballDeltaX *= -1;
+					//sound
+					//Sound.play("sound/sound.wnv");
+					//tạo panel để làm sound
+					
 				}
 			}
 
@@ -251,7 +256,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			
 			// draw the ball
 			g.setColor(Color.RED);
-			g.fillOval(ballX, ballY, diameter, diameter);
+			///g.fillOval(ballX, ballY, diameter, diameter);
+	//g.drawImage(4-->imgBall.getImage(),ballX, ballY, diameter, diameter,null);
 
 			// draw the paddles
 			
