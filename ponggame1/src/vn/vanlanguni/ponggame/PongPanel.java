@@ -105,24 +105,20 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// move player 1
 			// Move up if after moving, paddle is not outside the screen
-			// FIX #12:upPressed --> sPressed
 			if (sPressed && playerOneY - paddleSpeed > 0) {
-				playerOneY -= paddleSpeed;
+				playerOneY += paddleSpeed;
 			}
 			// Move down if after moving paddle is not outside the screen
-			// FIX #12:downPressed --> wPressed
 			if (wPressed && playerOneY + playerOneHeight + paddleSpeed < getHeight()) {
-				playerOneY += paddleSpeed;
+				playerOneY -= paddleSpeed;
 			}
 
 			// move player 2
 			// Move up if after moving paddle is not outside the screen
-			// FIX #12:wPressed --> upPressed
 			if (upPressed && playerTwoY - paddleSpeed > 0) {
 				playerTwoY -= paddleSpeed;
 			}
 			// Move down if after moving paddle is not outside the screen
-			// FIX #12:sPressed --> upPressed
 			if (downPressed && playerTwoY + playerTwoHeight + paddleSpeed < getHeight()) {
 				playerTwoY += paddleSpeed;
 			}
@@ -135,10 +131,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			int nextBallLeft = ballX + ballDeltaX;
 			int nextBallRight = ballX + diameter + ballDeltaX;
 			// FIXME Something not quite right here
-			// FIX #2: Thêm ballDeltaY vào int nextBallTop = ballY +
 			// ballDeltaY;
 			int nextBallTop = ballY + ballDeltaY;
-			// FIX #2: Thêm ballDeltaY vào int nextBallBottom = ballY +
 			// diameter + ballDeltaY;
 			int nextBallBottom = ballY + diameter + ballDeltaY;
 
@@ -160,8 +154,6 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (nextBallLeft < playerOneRight) {
 				// is it going to miss the paddle?
 				if (nextBallTop > playerOneBottom || nextBallBottom < playerOneTop) {
-					// FIX #4: sửa palyerOnescore++ thành playerTwoScore++
-					// FIX #5
 					playerTwoScore++;
 
 					// Player 2 Win, restart the game
@@ -174,11 +166,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				} else {
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
-					// FIX #2: sửa ballDeltaX *= 1 thành ballDeltaX *= -1
 					ballDeltaX *= -1;
 					// sound
 					// Sound.play("sound/sound.wnv");
-					// tạo panel để làm sound
 
 				}
 			}
@@ -201,7 +191,6 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
-					// FIX #2: sửa ballDeltaX *= 1 thành ballDeltaX *= -1
 					ballDeltaX *= -1;
 				}
 			}
@@ -256,7 +245,6 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.drawString(String.valueOf(playerOneScore), 100, 100); // Player 1
 																	// score
 
-			// FIX #4: sửa playerOneScore thành playerTwoScore
 			g.drawString(String.valueOf(playerTwoScore), 400, 100); // Player 2
 																	// score
 
@@ -284,9 +272,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// Draw the winner name
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			if (playerOneScore > playerTwoScore) {
-				g.drawString("Player 1 Wins!", 165, 200);
+				g.drawString("Player 1 Wins!", 130, 200);
 			} else {
-				g.drawString("Player 2 Wins!", 165, 200);
+				g.drawString("Player 2 Wins!", 130, 200);
 			}
 
 			// Draw Restart message
@@ -300,7 +288,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		if (showTitleScreen) {
-			if (e.getKeyChar() == 'p') {
+			if (e.getKeyCode() == 'P') {
 				showTitleScreen = false;
 				playing = true;
 			}
@@ -316,8 +304,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			}
 		} else if (gameOver && e.getKeyCode() == KeyEvent.VK_SPACE) {
 			gameOver = false;
-			// showTitleScreen = true;
-			playing = true;
+			 showTitleScreen = true;
+			//playing = true;
 			playerOneY = 250;
 			playerTwoY = 250;
 			ballX = 250;
