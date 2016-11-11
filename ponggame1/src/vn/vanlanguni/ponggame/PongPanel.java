@@ -83,7 +83,6 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	public PongPanel() {
 		setBackground(backgroundColor);
 		// Ball
-		
 		// listen to key presses
 		setFocusable(true);
 		addKeyListener(this);
@@ -216,7 +215,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		if (showTitleScreen) {
 
 			/* Show welcome screen */
-
+			g.drawImage(imgBackGround.getImage(), 0,0,500,500, null);
 			// Draw game title and start message
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 40));
 			g.setColor(Color.RED);
