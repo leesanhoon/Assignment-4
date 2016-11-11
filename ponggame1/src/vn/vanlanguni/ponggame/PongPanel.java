@@ -257,11 +257,11 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// draw the ball
 			
-			g.setColor(Color.red);
 			g.drawImage(imgBall.getImage(), ballX, ballY, diameter, diameter, null);
 			
 
 			// draw the paddles
+			g.setColor(Color.WHITE);
 			g.fillRect(playerOneX, playerOneY, playerOneWidth, playerOneHeight);
 			g.fillRect(playerTwoX, playerTwoY, playerTwoWidth, playerTwoHeight);
 		} else if (gameOver) {
