@@ -60,13 +60,13 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	ImageIcon imgBackGround = new ImageIcon("Photo/may.png");
 	/** Player 1's paddle: position and size */
 	private int playerOneX = 0;
-	private int playerOneY = 250;
+	private int playerOneY = 200;
 	private int playerOneWidth = 10;
 	private int playerOneHeight = 60;
 
 	/** Player 2's paddle: position and size */
 	private int playerTwoX = 475;
-	private int playerTwoY = 250;
+	private int playerTwoY = 200;
 	private int playerTwoWidth = 10;
 	private int playerTwoHeight = 60;
 
@@ -164,12 +164,13 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 						playing = false;
 						gameOver = true;
 					}
-					ballX = 200;
-					ballY = 200;
+					ballX = 250;
+					ballY = 250;
 				} else {
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
+					
 					// sound
 					// Sound.play("sound/Speech On.wav");
 
@@ -188,8 +189,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 						playing = false;
 						gameOver = true;
 					}
-					ballX = 200;
-					ballY = 200;
+					ballX = 250;
+					ballY = 250;
 				} else {
 
 					// If the ball hitting the paddle, it will bounce back
@@ -313,8 +314,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			playing = true;
 			playerOneScore = 0;
 			playerTwoScore = 0;
-			playerOneY = 230;
-			playerTwoY = 230;
+			playerOneY = 200;
+			playerTwoY = 200;
 			ballX = 250;
 			ballY = 250;
 		}
