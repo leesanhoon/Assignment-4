@@ -25,6 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -52,10 +53,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	/** The ball: position, diameter */
 	private int ballX = 200;
 	private int ballY = 200;
-	private int diameter = 20;
+	private int diameter = 30;
 	private int ballDeltaX = -1;
 	private int ballDeltaY = 3;
-	// ImageIcon imgBall;
+	ImageIcon imgBall;
 	/** Player 1's paddle: position and size */
 	private int playerOneX = 0;
 	private int playerOneY = 250;
@@ -81,7 +82,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	public PongPanel() {
 		setBackground(backgroundColor);
 		// Ball
-		// imgBall = new ImageIcon("đường dẫn ảnh///.png")
+		 imgBall = new ImageIcon("Photo/ball.png");
 		// listen to key presses
 		setFocusable(true);
 		addKeyListener(this);
@@ -252,8 +253,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// draw the ball
 			g.setColor(Color.RED);
 			g.fillOval(ballX, ballY, diameter, diameter);
-			// g.drawImage(4-->imgBall.getImage(),ballX, ballY, diameter,
-			// diameter,null);
+			 g.drawImage(imgBall.getImage(),ballX, ballY, diameter,diameter,null);
 
 			// draw the paddles
 
