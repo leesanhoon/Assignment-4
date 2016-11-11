@@ -56,7 +56,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int diameter = 30;
 	private int ballDeltaX = -1;
 	private int ballDeltaY = 3;
-	ImageIcon imgBall;
+	ImageIcon imgBall = new ImageIcon("Photo/ball.png");
+	ImageIcon imgBackGround = new ImageIcon("Photo/may.png");
 	/** Player 1's paddle: position and size */
 	private int playerOneX = 0;
 	private int playerOneY = 250;
@@ -82,7 +83,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	public PongPanel() {
 		setBackground(backgroundColor);
 		// Ball
-		imgBall = new ImageIcon("Photo/ball.png");
+		
 		// listen to key presses
 		setFocusable(true);
 		addKeyListener(this);
@@ -226,6 +227,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (playing) {
 
 			/* Game is playing */
+			g.drawImage(imgBackGround.getImage(), 0, 0, 500, 500, null);
 
 			// set the coordinate limit
 			int playerOneRight = playerOneX + playerOneWidth;
@@ -277,6 +279,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			} else {
 				g.drawString("Player 2 Wins!", 130, 200);
 			}
+			g.setFont(new Font(Font.DIALOG, Font.BOLD, 25));
+			g.setColor(Color.GREEN);
+			g.drawString("Press 'SPACE' to restart.", 100, 400);
 
 			// Draw Restart message
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
