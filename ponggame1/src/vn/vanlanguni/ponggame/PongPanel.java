@@ -149,6 +149,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// ball bounces off top and bottom of screen
 			if (nextBallTop < 0 || nextBallBottom > getHeight()) {
 				ballDeltaY *= -1;
+				Sound.play("sound/Speech On.wav");
 			}
 			// will the ball go off the left side?
 			if (nextBallLeft < playerOneRight) {
@@ -168,7 +169,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
 					// sound
-					// Sound.play("sound/sound.wnv");
+					//Sound.play("sound/Speech On.wav");
 
 				}
 			}
