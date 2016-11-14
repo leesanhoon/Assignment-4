@@ -58,7 +58,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int ballDeltaY = 3;
 	//Image
 	//ImageIcon imgBall = new ImageIcon("Photo/ballsoccer.png");
-	//ImageIcon imgBackGround = new ImageIcon("Photo/sanbongda.jpg");
+	ImageIcon imgBackGround = new ImageIcon("Photo/sanbongda.jpg");
 	/** Player 1's paddle: position and size */
 	private int playerOneX = 0;
 	private int playerOneY = 220;
@@ -219,7 +219,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		if (showTitleScreen) {
 
 			/* Show welcome screen */
-		//	g.drawImage(imgBackGround.getImage(), 0,0,500,500, null);
+			g.drawImage(imgBackGround.getImage(), 0,0,500,500, null);
 			// Draw game title and start message
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 40));
 			g.setColor(Color.BLACK);
@@ -231,7 +231,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (playing) {
 
 			/* Game is playing */
-			//g.drawImage(imgBackGround.getImage(), 0, 0, 500, 500, null);
+			g.drawImage(imgBackGround.getImage(), 0, 0, 500, 500, null);
 			// set the coordinate limit
 			int playerOneRight = playerOneX + playerOneWidth;
 			int playerTwoLeft = playerTwoX;
@@ -265,7 +265,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.fillRect(playerOneX, playerOneY, playerOneWidth, playerOneHeight);
 			g.fillRect(playerTwoX, playerTwoY, playerTwoWidth, playerTwoHeight);
 		} else if (gameOver) {
-			//g.drawImage(imgBackGround.getImage(), 0, 0, 520,540 , null);
+			g.drawImage(imgBackGround.getImage(), 0, 0, 520,540 , null);
 
 			/* Show End game screen with winner name and score */
 
