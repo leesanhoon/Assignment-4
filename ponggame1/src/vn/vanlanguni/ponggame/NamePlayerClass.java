@@ -46,7 +46,6 @@ public class NamePlayerClass extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				PongPanel.sPlayerName1 = txt1.getText();
 				PongPanel.sPlayerName2 = txt2.getText();
-				
 			}
 		});
 	}

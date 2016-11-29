@@ -154,14 +154,14 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// ball bounces off top and bottom of screen
 			if (nextBallTop < 0 || nextBallBottom > getHeight()) {
 				ballDeltaY *= -1;
-				//Sound.play("duong dan file am thanh");//am thanh khi bong cham tuong
+				Sound.play("Sound/select.wav");
 			}
 			// will the ball go off the left side?
 			if (nextBallLeft < playerOneRight) {
 				// is it going to miss the paddle?
 				if (nextBallTop > playerOneBottom || nextBallBottom < playerOneTop) {
 					playerTwoScore++;
-					//Sound.play("duongdanfileamthanh");//am thanh khi nguoi choi 2 duoc cong diem
+					Sound.play("Sound/ting.wav");//am thanh khi nguoi choi 2 duoc cong diem
 					// Player 2 Win, restart the game
 					if (playerTwoScore == 3) {
 						playing = false;
@@ -175,7 +175,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
-					//Sound.play("Sound/select.wav");//am thanh khi bong cham paddle
+					Sound.play("Sound/select.wav");//am thanh khi bong cham paddle
 					// sound
 					// Sound.play("sound/Speech On.wav");
 
@@ -188,7 +188,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				if (nextBallTop > playerTwoBottom || nextBallBottom < playerTwoTop) {
 
 					playerOneScore++;
-					//Sound.play("Sound/ting.wav");//am thanh nguoi choi 1 cong diem
+					Sound.play("Sound/ting.wav");//am thanh nguoi choi 1 cong diem
 					// Player 1 Win, restart the game
 					if (playerOneScore == 3) {
 						playing = false;
@@ -203,7 +203,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
 					ballDeltaX *= -1;
-				//	Sound.play("Sound/select.wav");// am thanh khi bong cham paddle
+					Sound.play("Sound/select.wav");// am thanh khi bong cham paddle
 				}
 			}
 
