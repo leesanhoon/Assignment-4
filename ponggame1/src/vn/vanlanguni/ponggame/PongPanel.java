@@ -269,9 +269,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			
 
 			// draw the paddles
-			g.setColor(Color.RED);
+			g.setColor(Color.WHITE);
 			g.fillRect(playerOneX, playerOneY, playerOneWidth, playerOneHeight);
 			g.fillRect(playerTwoX, playerTwoY, playerTwoWidth, playerTwoHeight);
+			g.setColor(Color.BLACK);
 			g.drawString(sPlayerName1, 15, 40);
 			g.drawString(sPlayerName2, 250, 40);
 		} else if (gameOver) {
@@ -316,6 +317,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (e.getKeyCode() == 'D') {
 				NamePlayerClass mainwindow = new NamePlayerClass();
 				mainwindow.setVisible(true);
+				
 			}
 		} else if (playing) {
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
