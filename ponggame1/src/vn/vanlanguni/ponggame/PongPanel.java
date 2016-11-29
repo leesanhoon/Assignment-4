@@ -163,6 +163,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					if (playerTwoScore == 3) {
 						playing = false;
 						gameOver = true;
+						Sound.play("Sound/endsound.wav"); //am thanh khi ket thuc (Minhduy)
 						//Sound.play("Sound/gameover.wav");// am thanh khi nguoi choi 2 chien thang
 					}
 					ballX = 250;
@@ -189,6 +190,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					if (playerOneScore == 3) {
 						playing = false;
 						gameOver = true;
+						Sound.play("Sound/endsound.wav");//am thanh khi ket thuc (Minhduy)
 						//Sound.play("Sound/gameover.wav");// am thanh khi nguoi choi 1 chien thang
 					}
 					ballX = 250;
@@ -301,6 +303,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (e.getKeyCode() == 'P') {
 				showTitleScreen = false;
 				playing = true;
+				Sound.play("Sound/startsound.wav");//am thanh khi bat dau (Minhduy)
 			}
 		} else if (playing) {
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
