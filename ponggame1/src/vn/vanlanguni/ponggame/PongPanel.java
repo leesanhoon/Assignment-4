@@ -80,6 +80,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	// FIX #2: Thêm = 0 vào private int playerTwoScore
 	private int playerTwoScore = 0;
 
+	//
+	static String sPlayerName1 = "player 1";
+	static String sPlayerName2 = "player 2";
 	/** Construct a PongPanel. */
 	public PongPanel() {
 		setBackground(backgroundColor);
@@ -230,6 +233,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// FIXME Wellcome message below show smaller than game title
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 25));
 			g.drawString("Press 'P' to play.", 150, 400);
+			g.drawString("Press 'D' to name.", 150, 450);
+			g.drawString(sPlayerName1, 15, 40);
+			g.drawString(sPlayerName2, 250, 40);
 		} else if (playing) {
 
 			/* Game is playing */
@@ -266,6 +272,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.setColor(Color.RED);
 			g.fillRect(playerOneX, playerOneY, playerOneWidth, playerOneHeight);
 			g.fillRect(playerTwoX, playerTwoY, playerTwoWidth, playerTwoHeight);
+			g.drawString(sPlayerName1, 15, 40);
+			g.drawString(sPlayerName2, 250, 40);
 		} else if (gameOver) {
 			g.drawImage(imgBackGround.getImage(), 0, 0, 520,540 , null);
 
@@ -281,9 +289,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// Draw the winner name
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			if (playerOneScore > playerTwoScore) {
-				g.drawString("Player 1 Wins!", 130, 200);
+				g.drawString(sPlayerName1+" Wins!", 130, 200);
 			} else {
-				g.drawString("Player 2 Wins!", 130, 200);
+				g.drawString(sPlayerName2+" Wins!", 130, 200);
 			}
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 30));
 			g.setColor(Color.BLACK);
@@ -304,6 +312,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				showTitleScreen = false;
 				playing = true;
 				Sound.play("Sound/startsound.wav");//am thanh khi bat dau (Minhduy)
+			}
+			if (e.getKeyCode() == 'D') {
+				NamePlayerClass mainwindow = new NamePlayerClass();
+				mainwindow.setVisible(true);
 			}
 		} else if (playing) {
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
