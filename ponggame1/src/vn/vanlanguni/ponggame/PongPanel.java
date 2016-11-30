@@ -83,6 +83,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	//
 	static String sPlayerName1 = "player 1";
 	static String sPlayerName2 = "player 2";
+	static int NumPaddlesColor;
+	static boolean rectinPaddles = false;
+
+	
 	/** Construct a PongPanel. */
 	public PongPanel() {
 		setBackground(backgroundColor);
@@ -234,6 +238,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 25));
 			g.drawString("Press 'P' to play.", 150, 400);
 			g.drawString("Press 'D' to name.", 150, 450);
+			g.drawString("Press 'C' to changePaddlesColor", 75, 350);
 			g.drawString(sPlayerName1, 15, 40);
 			g.drawString(sPlayerName2, 250, 40);
 		} else if (playing) {
@@ -255,7 +260,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.drawLine(playerTwoLeft, 0, playerTwoLeft, getHeight());
 
 			// draw the scores
-			g.setColor(Color.BLUE);
+			g.setColor(Color.PINK);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			g.drawString(String.valueOf(playerOneScore), 100, 100); // Player 1
 																	// score
@@ -266,15 +271,24 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// draw the ball
 			
 			g.drawImage(imgBall.getImage(), ballX, ballY, diameter, diameter, null);
+			//Doi mau PAddles
+			if (NumPaddlesColor == 0) {
+				g.setColor(Color.WHITE);
+			} else if (NumPaddlesColor == 1) {
+				g.setColor(Color.BLUE);
+			} else if (NumPaddlesColor == 2) {
+				g.setColor(Color.RED);
+			}
 			
 
 			// draw the paddles
-			g.setColor(Color.WHITE);
+			
+			//g.setColor(Color.BLUE);
 			g.fillRect(playerOneX, playerOneY, playerOneWidth, playerOneHeight);
 			g.fillRect(playerTwoX, playerTwoY, playerTwoWidth, playerTwoHeight);
 			g.setColor(Color.BLACK);
-			g.drawString(sPlayerName1, 15, 40);
-			g.drawString(sPlayerName2, 250, 40);
+		    g.drawString(sPlayerName1, 75, 40);
+			g.drawString(sPlayerName2, 310, 40);
 		} else if (gameOver) {
 			g.drawImage(imgBackGround.getImage(), 0, 0, 520,540 , null);
 
@@ -316,6 +330,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			}
 			if (e.getKeyCode() == 'D') {
 				NamePlayerClass mainwindow = new NamePlayerClass();
+				mainwindow.setVisible(true);
+				
+			}if (e.getKeyCode() == 'C') {
+				Paddles mainwindow = new Paddles();
 				mainwindow.setVisible(true);
 				
 			}
