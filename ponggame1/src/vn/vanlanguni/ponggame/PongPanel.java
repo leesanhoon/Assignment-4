@@ -80,6 +80,13 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	// FIX #2: Thêm = 0 vào private int playerTwoScore
 	private int playerTwoScore = 0;
 
+	//FIX #17
+	static int NumTypeBall=0;
+	ImageIcon imColorBall = new ImageIcon("./Photo/ball1.png");
+	ImageIcon imTennis = new ImageIcon("./Photo/ball22.png");
+	ImageIcon imBasketball = new ImageIcon("./Photo/ball3.png");
+	ImageIcon imPokemonball = new ImageIcon("./Photo/ball4.png");
+	
 	//
 	static String sPlayerName1 = "player 1";
 	static String sPlayerName2 = "player 2";
@@ -201,7 +208,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 						//Sound.play("Sound/gameover.wav");// am thanh khi nguoi choi 1 chien thang
 					}
 					ballX = 250;
-					ballY = 250;
+			 		ballY = 250;
 				} else {
 
 					// If the ball hitting the paddle, it will bounce back
@@ -248,7 +255,21 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// set the coordinate limit
 			int playerOneRight = playerOneX + playerOneWidth;
 			int playerTwoLeft = playerTwoX;
-
+			g.setColor(Color.RED);
+			 	if (NumTypeBall == 0) {
+			 				g.drawImage(imColorBall.getImage(), ballX, ballY, diameter,
+			 						diameter, null);
+			 			} else if (NumTypeBall == 1) {
+			 				g.drawImage(imTennis.getImage(), ballX, ballY, diameter,
+			 						diameter, null);
+			 			} else if (NumTypeBall == 2) {
+			 				g.drawImage(imBasketball.getImage(), ballX, ballY, diameter,
+			 						diameter, null);
+			 			} else if (NumTypeBall == 3) {
+			 				g.drawImage(imPokemonball.getImage(), ballX, ballY, diameter,
+			 						diameter, null);
+			 			}
+			
 			// draw dashed line down center
 			g.setColor(Color.green);
 			for (int lineY = 0; lineY < getHeight(); lineY += 50) {
@@ -263,14 +284,15 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.setColor(Color.PINK);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			g.drawString(String.valueOf(playerOneScore), 100, 100); // Player 1
-																	// score
+															// score
 
 			g.drawString(String.valueOf(playerTwoScore), 400, 100); // Player 2
-																	// score
-
+															// score
+		//	g.drawString("'p'", 210, 230);
+		//	g.drawString("press 'B'to choose the ball",100,200);
 			// draw the ball
 			
-			g.drawImage(imgBall.getImage(), ballX, ballY, diameter, diameter, null);
+			//g.drawImage(imgBall.getImage(), ballX, ballY, diameter, diameter, null);
 			//Doi mau PAddles
 			if (NumPaddlesColor == 0) {
 				g.setColor(Color.WHITE);
@@ -327,6 +349,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				showTitleScreen = false;
 				playing = true;
 				Sound.play("Sound/startsound.wav");//am thanh khi bat dau (Minhduy)
+			}else if(e.getKeyChar()=='b'|| e.getKeyChar()=='B'){
+				ball mainWidow = new ball();
+				mainWidow.setVisible(true);
 			}
 			if (e.getKeyCode() == 'D') {
 				NamePlayerClass mainwindow = new NamePlayerClass();
